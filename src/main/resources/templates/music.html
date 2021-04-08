@@ -9,13 +9,27 @@
     <title>Albums</title>
 </head>
 <body>
+
+        <form action="/albums" method="POST">
+            <fieldset>
+                <input type="text" placeholder="title" name="title">
+                <input type="text" placeholder="artist" name="artist">
+                <input type="text" placeholder="songCount" name="songCount">
+                <input type="text" placeholder="length" name="length">
+                <input type="text" placeholder="image_url" name="imageUrl">
+                <button type="submit">Submit</button>
+            </fieldset>
+        </form>
+
+
+
     <div th:each="album : ${coolAlbums}">
-        <h3></h3>
+        <h3 th:text="${album.title}"></h3>
         <img th:src="@{${album.imageUrl}}" alt="">
         <p>Artist: <span th:text="${album.artist}"></span> Song Count: <span
                 th:text="${album.songCount}"></span>
             Duration: <span th:text="${album.length}">duration
-        </span> seconds
+            </span> seconds
         </p>
     </div>
 </body>
