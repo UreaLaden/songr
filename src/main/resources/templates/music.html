@@ -12,15 +12,15 @@
 
         <form action="/albums" method="POST">
             <fieldset>
+                <label  for="Add Album" ></label>
                 <input type="text" placeholder="title" name="title">
                 <input type="text" placeholder="artist" name="artist">
                 <input type="text" placeholder="songCount" name="songCount">
                 <input type="text" placeholder="length" name="length">
                 <input type="text" placeholder="image_url" name="imageUrl">
-                <button type="submit">Submit</button>
+                <button type="submit">Add Album</button>
             </fieldset>
         </form>
-
 
 
     <div th:each="album : ${coolAlbums}">
@@ -31,6 +31,9 @@
             Duration: <span th:text="${album.length}">duration
             </span> seconds
         </p>
+        <form th:action="'/song/' + ${album.id}" method="GET">
+            <input type="submit" value="Add Tracks to Album">
+        </form>
     </div>
 </body>
 </html>

@@ -8,14 +8,22 @@ public class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
+
+    public long getId() {
+        return id;
+    }
+
+    @Column(columnDefinition = "TEXT")
     String title;
+
+    @OneToMany(mappedBy="albumTitle",cascade = CascadeType.ALL)
+    public List<Song> songs;
+
     String artist;
     String imageUrl;
     int songCount;
     int length;
 
-    @OneToMany(mappedBy="albumTitle",cascade = CascadeType.ALL)
-    List<Song> songs;
 
     public Album(){}
 
@@ -35,6 +43,34 @@ public class Album {
         return artist;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setSongs(List<Song> songs) {
+        this.songs = songs;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public void setSongCount(int songCount) {
+        this.songCount = songCount;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
     public String getImageUrl() {
         return imageUrl;
     }
@@ -45,5 +81,8 @@ public class Album {
 
     public int getLength() {
         return length;
+    }
+    public List<Song> getSongs() {
+        return songs;
     }
 }
